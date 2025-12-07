@@ -6,12 +6,11 @@ use std::fs::File;
 use std::io::{BufRead, BufReader};
 
 /*
-Author Gaurav Sablok,
-Email: codeprog@icloud.com
+Gaurav Sablok,
+codeprog@icloud.com
 */
 
-#[tokio::main]
-pub async fn ord_mapper(ord: &str) -> Result<String, Box<dyn Error>> {
+pub fn ord_mapper(ord: &str) -> Result<String, Box<dyn Error>> {
     dotenv().ok();
 
     let file2 = std::env::var("file2").expect("file not present");

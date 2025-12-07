@@ -30,8 +30,8 @@ use clap::Parser;
 use figlet_rs::FIGfont;
 
 /*
-Author Gaurav Sablok,
-Email: codeprog@icloud.com
+Gaurav Sablok,
+codeprog@icloud.com
 */
 
 fn main() {
@@ -41,53 +41,128 @@ fn main() {
     println!("{}", figure.unwrap());
     let argsparse = CommandParse::parse();
     match &argsparse.command {
-        Commands::Plz { plz } => {
-            let command = plz_mapper(plz).unwrap();
-            println!("The results are: {:?}", command);
+        Commands::Plz { plz, thread } => {
+            let pool = rayon::ThreadPoolBuilder::new()
+                .num_threads(thread.parse::<usize>().unwrap())
+                .build()
+                .unwrap();
+            pool.install(|| {
+                let command = plz_mapper(plz).unwrap();
+                println!("The results are: {:?}", command);
+            });
         }
-        Commands::Note { note } => {
-            let command = note_mapper(note).unwrap();
-            println!("The results are: {:?}", command);
+        Commands::Note { note, thread } => {
+            let pool = rayon::ThreadPoolBuilder::new()
+                .num_threads(thread.parse::<usize>().unwrap())
+                .build()
+                .unwrap();
+            pool.install(|| {
+                let command = note_mapper(note).unwrap();
+                println!("The results are: {:?}", command);
+            });
         }
-        Commands::Einwohner { einwohner } => {
-            let command = einwohner_mapper(einwohner).unwrap();
-            println!("The results are: {:?}", command);
+        Commands::Einwohner { einwohner, thread } => {
+            let pool = rayon::ThreadPoolBuilder::new()
+                .num_threads(thread.parse::<usize>().unwrap())
+                .build()
+                .unwrap();
+            pool.install(|| {
+                let command = einwohner_mapper(einwohner).unwrap();
+                println!("The results are: {:?}", command);
+            });
         }
-        Commands::Qkm { qkm } => {
-            let command = qkm_mapper(qkm).unwrap();
-            println!("The results are: {:?}", command);
+        Commands::Qkm { qkm, thread } => {
+            let pool = rayon::ThreadPoolBuilder::new()
+                .num_threads(thread.parse::<usize>().unwrap())
+                .build()
+                .unwrap();
+            pool.install(|| {
+                let command = qkm_mapper(qkm).unwrap();
+                println!("The results are: {:?}", command);
+            });
         }
-        Commands::Latitude { lat } => {
-            let command = latitude_mapper(lat).unwrap();
-            println!("The results are: {:?}", command);
+        Commands::Latitude { lat, thread } => {
+            let pool = rayon::ThreadPoolBuilder::new()
+                .num_threads(thread.parse::<usize>().unwrap())
+                .build()
+                .unwrap();
+            pool.install(|| {
+                let command = latitude_mapper(lat).unwrap();
+                println!("The results are: {:?}", command);
+            });
         }
-        Commands::Longitude { lon } => {
-            let command = longitude_mapper(lon).unwrap();
-            println!("The results are: {:?}", command);
+        Commands::Longitude { lon, thread } => {
+            let pool = rayon::ThreadPoolBuilder::new()
+                .num_threads(thread.parse::<usize>().unwrap())
+                .build()
+                .unwrap();
+            pool.install(|| {
+                let command = longitude_mapper(lon).unwrap();
+                println!("The results are: {:?}", command);
+            })
         }
-        Commands::Osm { osm_id } => {
-            let command = osm_mapper(osm_id).unwrap();
-            println!("The results are: {:?}", command);
+        Commands::Osm { osm_id, thread } => {
+            let pool = rayon::ThreadPoolBuilder::new()
+                .num_threads(thread.parse::<usize>().unwrap())
+                .build()
+                .unwrap();
+            pool.install(|| {
+                let command = osm_mapper(osm_id).unwrap();
+                println!("The results are: {:?}", command);
+            });
         }
-        Commands::Ags { ags } => {
-            let command = ags_mapper(ags).unwrap();
-            println!("The results are: {:?}", command);
+        Commands::Ags { ags, thread } => {
+            let pool = rayon::ThreadPoolBuilder::new()
+                .num_threads(thread.parse::<usize>().unwrap())
+                .build()
+                .unwrap();
+            pool.install(|| {
+                let command = ags_mapper(ags).unwrap();
+                println!("The results are: {:?}", command);
+            });
         }
-        Commands::Ord { ord } => {
-            let command = ord_mapper(ord).unwrap();
-            println!("The results are: {:?}", command);
+        Commands::Ord { ord, thread } => {
+            let pool = rayon::ThreadPoolBuilder::new()
+                .num_threads(thread.parse::<usize>().unwrap())
+                .build()
+                .unwrap();
+            pool.install(|| {
+                let command = ord_mapper(ord).unwrap();
+                println!("The results are: {:?}", command);
+            });
         }
-        Commands::Landkreis { landkries } => {
-            let command = landkries_mapper(landkries).unwrap();
-            println!("The results are: {:?}", command);
+        Commands::Landkreis { landkries, thread } => {
+            let pool = rayon::ThreadPoolBuilder::new()
+                .num_threads(thread.parse::<usize>().unwrap())
+                .build()
+                .unwrap();
+            pool.install(|| {
+                let command = landkries_mapper(landkries).unwrap();
+                println!("The results are: {:?}", command);
+            });
         }
-        Commands::Bundesland { bundesland } => {
-            let command = bundesland_mapper(bundesland).unwrap();
-            println!("The results are: {:?}", command);
+        Commands::Bundesland { bundesland, thread } => {
+            let pool = rayon::ThreadPoolBuilder::new()
+                .num_threads(thread.parse::<usize>().unwrap())
+                .build()
+                .unwrap();
+            pool.install(|| {
+                let command = bundesland_mapper(bundesland).unwrap();
+                println!("The results are: {:?}", command);
+            });
         }
-        Commands::GeneralPattern { generalpattern } => {
-            let command = generalpattern_mapper(generalpattern).unwrap();
-            println!(" The results are: {:?}", command);
+        Commands::GeneralPattern {
+            generalpattern,
+            thread,
+        } => {
+            let pool = rayon::ThreadPoolBuilder::new()
+                .num_threads(thread.parse::<usize>().unwrap())
+                .build()
+                .unwrap();
+            pool.install(|| {
+                let command = generalpattern_mapper(generalpattern).unwrap();
+                println!(" The results are: {:?}", command);
+            });
         }
     }
 }

@@ -5,12 +5,11 @@ use std::fs::File;
 use std::io::{BufRead, BufReader};
 
 /*
-Author Gaurav Sablok,
-Email: codeprog@icloud.com
+Gaurav Sablok,
+codeprog@icloud.com
 */
 
-#[tokio::main]
-pub async fn einwohner_mapper(einwohner: &str) -> Result<String, Box<dyn Error>> {
+pub fn einwohner_mapper(einwohner: &str) -> Result<String, Box<dyn Error>> {
     dotenv().ok();
 
     let file1 = std::env::var("file1").expect("file not present");

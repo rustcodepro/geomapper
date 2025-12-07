@@ -18,27 +18,30 @@ pub struct CommandParse {
 #[derive(Subcommand, Debug)]
 pub enum Commands {
     /// search according to the plz
-    Plz { plz: String },
+    Plz { plz: String, thread: String },
     /// search according to the note
-    Note { note: String },
+    Note { note: String, thread: String },
     /// search according to the einwohner
-    Einwohner { einwohner: String },
+    Einwohner { einwohner: String, thread: String },
     /// search according to the qkm
-    Qkm { qkm: String },
+    Qkm { qkm: String, thread: String },
     /// search according to the latitude
-    Latitude { lat: String },
+    Latitude { lat: String, thread: String },
     /// search according to the longitude
-    Longitude { lon: String },
+    Longitude { lon: String, thread: String },
     /// search according to the osm
-    Osm { osm_id: String },
+    Osm { osm_id: String, thread: String },
     /// search according to the ags
-    Ags { ags: String },
+    Ags { ags: String, thread: String },
     ///search according to the ort
-    Ord { ord: String },
+    Ord { ord: String, thread: String },
     /// search according to the landkries
-    Landkreis { landkries: String },
+    Landkreis { landkries: String, thread: String },
     /// search according to the bundesland
-    Bundesland { bundesland: String },
+    Bundesland { bundesland: String, thread: String },
     /// general pattern search
-    GeneralPattern { generalpattern: String },
+    GeneralPattern {
+        generalpattern: String,
+        thread: String,
+    },
 }
